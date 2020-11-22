@@ -1,4 +1,4 @@
-# ArcNote_ver_2.0
+# ArcNote
 
 ## 簡介
 
