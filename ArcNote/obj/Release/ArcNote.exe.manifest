@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ArcNote" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ArcNote" version="2.1.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="ArcNote.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,13 +43,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ArcNote.exe" size="73216">
-      <assemblyIdentity name="ArcNote" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="ArcNote" version="2.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/g4K5YetMDzbTtD+7fviuDzTxLLvoAZrTiXsdPM+k6A=</dsig:DigestValue>
+        <dsig:DigestValue>gb1RrP2Mz5D0wuA/iF9OFDAMdTWjrM2hLOQlNMQF2cw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

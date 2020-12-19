@@ -41,31 +41,35 @@ namespace ArcNote
             }
 
         }
-        bool boldstate = false;//加粗狀態
-        private void InputRichTextBox_TextBoldEnable(object sender, EventArgs e)//啟用加粗
+        bool boldState = false;//加粗狀態
+        private void InputRichTextBox_TextBold(object sender, EventArgs e)//加粗切換
         {
-            
-            InputRichTextBox.FontWeight = FontWeights.Bold;
-            boldstate = true;
+            if (boldState == false)
+            {
+                InputRichTextBox.FontWeight = FontWeights.Bold;
+                boldState = true;
+            }
+            else
+            {
+                InputRichTextBox.FontWeight = FontWeights.Normal;
+                boldState = false;
+            }
         }
-        private void InputRichTextBox_TextBoldDisable(object sender, EventArgs e)//禁用加粗
+        bool italicState = false;//意大利體狀態
+        private void InputRichTextBox_TextItalic(object sender, EventArgs e)//意大利體切換
         {
-
-            InputRichTextBox.FontWeight = FontWeights.Normal;
-            boldstate = false;
+            if (italicState == false)
+            {
+                InputRichTextBox.FontStyle = FontStyles.Italic;
+                italicState = true;
+            }
+            else
+            {
+                InputRichTextBox.FontStyle = FontStyles.Normal;
+                italicState = false;
+            }
         }
-        bool italicstate = false;
-        private void InputRichTextBox_TextItalicEnable(object sender, EventArgs e)//啓用意大利斜體
-        {
-            InputRichTextBox.FontStyle = FontStyles.Italic;
-            italicstate = true;
-        }
-        private void InputRichTextBox_TextItalicDisable(object sender, EventArgs e)//禁用意大利斜體
-        {
-            InputRichTextBox.FontStyle = FontStyles.Normal;
-            italicstate = false;
-        }
-        private void InputRichTextBox_OpenFile(object sender, RoutedEventArgs e) //打開檔案
+        private void InputRichTextBox_OpenFile(object sender, RoutedEventArgs e) //重開檔案
         {
             string folderName = @"%Appdata%";
             string path = System.IO.Path.Combine(folderName, "ArcNote");
@@ -73,7 +77,7 @@ namespace ArcNote
             path = Environment.ExpandEnvironmentVariables(path);
             System.IO.Directory.CreateDirectory(path);
             path = System.IO.Path.Combine(path, fileName);
-            if (System.IO.File.Exists(path))
+            try
             {
                 TextRange range;
                 FileStream File;
@@ -82,23 +86,18 @@ namespace ArcNote
                 range.Load(File, DataFormats.Xaml) ;
                 File.Close();
             }
-            else
+            catch (IOException)
             {
-                TextRange range;
-                FileStream file;
-                range = new TextRange(InputRichTextBox.Document.ContentStart, InputRichTextBox.Document.ContentStart);
-                file = new FileStream(path, FileMode.Create);
-                range.Save(file, DataFormats.Xaml);
-                MessageBox.Show("無記事檔案，現已建立佔位空檔案", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("無檔案可供重開", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
         private void InputRichTextBox_SaveFile(object sender, RoutedEventArgs e) //存爲檔案
         {
-            if (boldstate == true)//臨時去加粗
+            if (boldState == true)//臨時去加粗
             {
                 InputRichTextBox.Document.FontWeight = FontWeights.Normal;
             }
-            if (italicstate == true)//臨時去意大利體
+            if (italicState == true)//臨時去意大利體
             {
                 InputRichTextBox.Document.FontStyle = FontStyles.Normal;
             }
@@ -114,30 +113,37 @@ namespace ArcNote
             file = new FileStream(path, FileMode.Create);
             range.Save(file, DataFormats.Xaml);
             file.Close();
-            if (boldstate == true)//恢復加粗
+            if (boldState == true)//恢復加粗
             {
                 InputRichTextBox.Document.FontWeight = FontWeights.Bold;
             }
-            if (italicstate == true)//恢復意大利體
+            if (italicState == true)//恢復意大利體
             {
                 InputRichTextBox.Document.FontStyle = FontStyles.Italic;
             }
             MessageBox.Show("檔案已儲存", "", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        private void InputRichTextBox_DeleteFile(object sender, RoutedEventArgs e)
+        private void InputRichTextBox_DeleteFile(object sender, RoutedEventArgs e)//刪除檔案
         {
-            string folderName = @"%Appdata%";
-            string path = System.IO.Path.Combine(folderName, "ArcNote");
-            string fileName = "Note.xml";
-            path = Environment.ExpandEnvironmentVariables(path);
-            path = System.IO.Path.Combine(path, fileName);
-            System.IO.File.Delete(path);
-            path = System.IO.Path.Combine(folderName, "ArcNote");
-            path = Environment.ExpandEnvironmentVariables(path);
-            System.IO.Directory.Delete(path);
-            MessageBox.Show("檔案已刪除", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                string folderName = @"%Appdata%";
+                string path = System.IO.Path.Combine(folderName, "ArcNote");
+                string fileName = "Note.xml";
+                path = Environment.ExpandEnvironmentVariables(path);
+                path = System.IO.Path.Combine(path, fileName);
+                System.IO.File.Delete(path);
+                path = System.IO.Path.Combine(folderName, "ArcNote");
+                path = Environment.ExpandEnvironmentVariables(path);
+                System.IO.Directory.Delete(path);
+                MessageBox.Show("檔案已刪除", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("當前無檔案可供刪除", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
-        private void Exit(object sender, RoutedEventArgs e) //退出
+        private void Exit(object sender, RoutedEventArgs e) //退出程式
         {
             Application.Current.Shutdown();
         }

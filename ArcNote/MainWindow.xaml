@@ -13,7 +13,18 @@
         <Border BorderBrush="Transparent" Background="#FFACEAEE" BorderThickness="1" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="190" Opacity="0.7" CornerRadius="15,15,15,15">
             <Border.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="退出 ArcNote" Click="Exit"></MenuItem>
+                    <MenuItem Header="檔案操作">
+                        <MenuItem Header="重開記事" Click="InputRichTextBox_OpenFile"></MenuItem>
+                        <MenuItem Header="儲存記事" Click="InputRichTextBox_SaveFile"></MenuItem>
+                        <MenuItem Header="刪除檔案" Click="InputRichTextBox_DeleteFile"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="字型樣式">
+                        <MenuItem Header="加粗" Click="InputRichTextBox_TextBold"></MenuItem>
+                        <MenuItem Header="意大利斜體" Click="InputRichTextBox_TextItalic"></MenuItem>
+                    </MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="退出 ArcNote" Click="Exit">
+                    </MenuItem>
                 </ContextMenu>
             </Border.ContextMenu>
             <Border.Effect>
@@ -35,14 +46,8 @@
                         <MenuItem Header="刪除檔案" Click="InputRichTextBox_DeleteFile"></MenuItem>
                     </MenuItem>
                     <MenuItem Header="字型樣式">
-                        <MenuItem Header="加粗">
-                            <MenuItem Header="啟用" Click="InputRichTextBox_TextBoldEnable"></MenuItem>
-                            <MenuItem Header="禁用" Click="InputRichTextBox_TextBoldDisable"></MenuItem>
-                        </MenuItem>
-                        <MenuItem Header="意大利斜體">
-                            <MenuItem Header="啟用" Click="InputRichTextBox_TextItalicEnable"></MenuItem>
-                            <MenuItem Header="禁用" Click="InputRichTextBox_TextItalicDisable"></MenuItem>
-                        </MenuItem>
+                        <MenuItem Header="加粗" Click="InputRichTextBox_TextBold"></MenuItem>
+                        <MenuItem Header="意大利斜體" Click="InputRichTextBox_TextItalic"></MenuItem>
                     </MenuItem>
                     <Separator></Separator>
                     <MenuItem Header="退出 ArcNote" Click="Exit">
