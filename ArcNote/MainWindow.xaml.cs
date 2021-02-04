@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Drawing;
-using System.IO;
 
 
 namespace ArcNote
@@ -87,30 +77,30 @@ namespace ArcNote
         public void SlotOrange(object sender, EventArgs e)//橙色槽
         {
             slotColor = 2;
-            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF,0xF1,0x83,0x37));
+            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xF1, 0x83, 0x37));
             InputRichTextBox.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x00, 0x00));
             InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0xAC, 0xEA, 0xEE));
         }
-        public void SlotRed (object sender, EventArgs e)//紅色槽
+        public void SlotRed(object sender, EventArgs e)//紅色槽
         {
             slotColor = 3;
-            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF,0xF9,0x4E,0x4E));
+            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xF9, 0x4E, 0x4E));
             InputRichTextBox.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x00, 0x00));
-            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF,0x80,0xC3,0x2E));
+            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0x80, 0xC3, 0x2E));
         }
         public void SlotGreen(object sender, EventArgs e)//綠色槽
         {
             slotColor = 4;
-            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF,0xA5,0xD3,0x55));
-            InputRichTextBox.Foreground = new SolidColorBrush(Color.FromArgb(0xFF,0x00,0x00,0x00));
-            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF,0x9B,0x21,0x21));
+            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xA5, 0xD3, 0x55));
+            InputRichTextBox.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x00, 0x00));
+            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0x9B, 0x21, 0x21));
         }
         public void SlotBlack(object sender, EventArgs e)//黑色槽
         {
             slotColor = 5;
-            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF,0x00,0x00,0x00));
+            MainBorder.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x00, 0x00));
             InputRichTextBox.Foreground = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));
-            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF,0x95,0x95,0x95));
+            InputRichTextBox.SelectionBrush = new SolidColorBrush(Color.FromArgb(0xFF, 0x95, 0x95, 0x95));
         }
         private void InputRichTextBox_OpenFile(object sender, RoutedEventArgs e) //重開檔案
         {
